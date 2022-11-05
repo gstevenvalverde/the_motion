@@ -8,22 +8,27 @@ import CommandUpLeft
 import CommandUpRight
 import CommandDownLeft
 import CommandDownRight
-import CommandStop
+
+import CommandUpdate
+import CommandDraw
+
 
 class Invoker:
 
     commands = []
 
-    def __init__(self, player):
+    def __init__(self, player, SCREEN):
         # self.commands.append(c)
-        self.commands[0] = CommandUp.CommandUp(player)
-        self.commands[1] = CommandDown.CommandDown(player)
-        self.commands[2] = CommandLeft.CommandLeft(player)
-        self.commands[3] = CommandRight.CommandRight(player)
-        self.commands[4] = CommandDownLeft.CommandDownLeft(player)
-        self.commands[5] = CommandDownRight.CommandDownRight(player)
-        self.commands[6] = CommandUpLeft.CommandUpLeft(player)
-        self.commands[7] = CommandUpRight.CommandUpRight(player)
+        self.commands.append(CommandUp.CommandUp(player))
+        self.commands.append(CommandDown.CommandDown(player))
+        self.commands.append(CommandLeft.CommandLeft(player))
+        self.commands.append(CommandRight.CommandRight(player))
+        self.commands.append(CommandUpLeft.CommandUpLeft(player))
+        self.commands.append(CommandUpRight.CommandUpRight(player))
+        self.commands.append(CommandDownLeft.CommandDownLeft(player))
+        self.commands.append(CommandDownRight.CommandDownRight(player))
+        self.commands.append(CommandUpdate.CommandUpdate(player))
+        self.commands.append(CommandDraw.CommandDraw(player, SCREEN))
 
-    def action(self, i):
-        self.commands[i].execute()
+    def action(self, command):
+        self.commands[command].execute()
