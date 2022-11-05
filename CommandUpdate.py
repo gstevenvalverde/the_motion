@@ -1,6 +1,5 @@
 import ICommand
 import Boy
-import pygame
 
 
 class CommandUpdate(ICommand.ICommand):
